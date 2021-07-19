@@ -38,6 +38,20 @@ namespace AdminPan {
         
         private USER_PROFILEDataTable tableUSER_PROFILE;
         
+        private APPLICATION_USER_ACTIVITY_LOGDataTable tableAPPLICATION_USER_ACTIVITY_LOG;
+        
+        private global::System.Data.DataRelation relationFK_BASEACCESS_BASE;
+        
+        private global::System.Data.DataRelation relationFK_BASEACCESS_USER_PROFILE;
+        
+        private global::System.Data.DataRelation relationFK_COMPANYACCESS_COMPANY;
+        
+        private global::System.Data.DataRelation relationFK_COMPANYACCESS_USER_PROFILE;
+        
+        private global::System.Data.DataRelation relationFK_PROFILEACCESS_USER_PROFILE;
+        
+        private global::System.Data.DataRelation relationFK_PROFILEACCESS_WORK_PROFILE;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -86,6 +100,9 @@ namespace AdminPan {
                 }
                 if ((ds.Tables["USER_PROFILE"] != null)) {
                     base.Tables.Add(new USER_PROFILEDataTable(ds.Tables["USER_PROFILE"]));
+                }
+                if ((ds.Tables["APPLICATION_USER_ACTIVITY_LOG"] != null)) {
+                    base.Tables.Add(new APPLICATION_USER_ACTIVITY_LOGDataTable(ds.Tables["APPLICATION_USER_ACTIVITY_LOG"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -177,6 +194,16 @@ namespace AdminPan {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public APPLICATION_USER_ACTIVITY_LOGDataTable APPLICATION_USER_ACTIVITY_LOG {
+            get {
+                return this.tableAPPLICATION_USER_ACTIVITY_LOG;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -263,6 +290,9 @@ namespace AdminPan {
                 if ((ds.Tables["USER_PROFILE"] != null)) {
                     base.Tables.Add(new USER_PROFILEDataTable(ds.Tables["USER_PROFILE"]));
                 }
+                if ((ds.Tables["APPLICATION_USER_ACTIVITY_LOG"] != null)) {
+                    base.Tables.Add(new APPLICATION_USER_ACTIVITY_LOGDataTable(ds.Tables["APPLICATION_USER_ACTIVITY_LOG"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -338,6 +368,18 @@ namespace AdminPan {
                     this.tableUSER_PROFILE.InitVars();
                 }
             }
+            this.tableAPPLICATION_USER_ACTIVITY_LOG = ((APPLICATION_USER_ACTIVITY_LOGDataTable)(base.Tables["APPLICATION_USER_ACTIVITY_LOG"]));
+            if ((initTable == true)) {
+                if ((this.tableAPPLICATION_USER_ACTIVITY_LOG != null)) {
+                    this.tableAPPLICATION_USER_ACTIVITY_LOG.InitVars();
+                }
+            }
+            this.relationFK_BASEACCESS_BASE = this.Relations["FK_BASEACCESS_BASE"];
+            this.relationFK_BASEACCESS_USER_PROFILE = this.Relations["FK_BASEACCESS_USER_PROFILE"];
+            this.relationFK_COMPANYACCESS_COMPANY = this.Relations["FK_COMPANYACCESS_COMPANY"];
+            this.relationFK_COMPANYACCESS_USER_PROFILE = this.Relations["FK_COMPANYACCESS_USER_PROFILE"];
+            this.relationFK_PROFILEACCESS_USER_PROFILE = this.Relations["FK_PROFILEACCESS_USER_PROFILE"];
+            this.relationFK_PROFILEACCESS_WORK_PROFILE = this.Relations["FK_PROFILEACCESS_WORK_PROFILE"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -362,6 +404,32 @@ namespace AdminPan {
             base.Tables.Add(this.tableWORK_PROFILE);
             this.tableUSER_PROFILE = new USER_PROFILEDataTable();
             base.Tables.Add(this.tableUSER_PROFILE);
+            this.tableAPPLICATION_USER_ACTIVITY_LOG = new APPLICATION_USER_ACTIVITY_LOGDataTable();
+            base.Tables.Add(this.tableAPPLICATION_USER_ACTIVITY_LOG);
+            this.relationFK_BASEACCESS_BASE = new global::System.Data.DataRelation("FK_BASEACCESS_BASE", new global::System.Data.DataColumn[] {
+                        this.tableBASE.BASE_NAMEColumn}, new global::System.Data.DataColumn[] {
+                        this.tableBASEACCESS.BASEColumn}, false);
+            this.Relations.Add(this.relationFK_BASEACCESS_BASE);
+            this.relationFK_BASEACCESS_USER_PROFILE = new global::System.Data.DataRelation("FK_BASEACCESS_USER_PROFILE", new global::System.Data.DataColumn[] {
+                        this.tableUSER_PROFILE.USER_NAMEColumn}, new global::System.Data.DataColumn[] {
+                        this.tableBASEACCESS.USER_NAMEColumn}, false);
+            this.Relations.Add(this.relationFK_BASEACCESS_USER_PROFILE);
+            this.relationFK_COMPANYACCESS_COMPANY = new global::System.Data.DataRelation("FK_COMPANYACCESS_COMPANY", new global::System.Data.DataColumn[] {
+                        this.tableCOMPANY.COMPANY_NAMEColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCOMPANYACCESS.COMPANYColumn}, false);
+            this.Relations.Add(this.relationFK_COMPANYACCESS_COMPANY);
+            this.relationFK_COMPANYACCESS_USER_PROFILE = new global::System.Data.DataRelation("FK_COMPANYACCESS_USER_PROFILE", new global::System.Data.DataColumn[] {
+                        this.tableUSER_PROFILE.USER_NAMEColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCOMPANYACCESS.USER_NAMEColumn}, false);
+            this.Relations.Add(this.relationFK_COMPANYACCESS_USER_PROFILE);
+            this.relationFK_PROFILEACCESS_USER_PROFILE = new global::System.Data.DataRelation("FK_PROFILEACCESS_USER_PROFILE", new global::System.Data.DataColumn[] {
+                        this.tableUSER_PROFILE.USER_NAMEColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePROFILEACCESS.USER_NAMEColumn}, false);
+            this.Relations.Add(this.relationFK_PROFILEACCESS_USER_PROFILE);
+            this.relationFK_PROFILEACCESS_WORK_PROFILE = new global::System.Data.DataRelation("FK_PROFILEACCESS_WORK_PROFILE", new global::System.Data.DataColumn[] {
+                        this.tableWORK_PROFILE.PROFILE_NAMEColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePROFILEACCESS.PROFILEColumn}, false);
+            this.Relations.Add(this.relationFK_PROFILEACCESS_WORK_PROFILE);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -403,6 +471,12 @@ namespace AdminPan {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeUSER_PROFILE() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeAPPLICATION_USER_ACTIVITY_LOG() {
             return false;
         }
         
@@ -481,6 +555,9 @@ namespace AdminPan {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void USER_PROFILERowChangeEventHandler(object sender, USER_PROFILERowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void APPLICATION_USER_ACTIVITY_LOGRowChangeEventHandler(object sender, APPLICATION_USER_ACTIVITY_LOGRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -838,11 +915,17 @@ namespace AdminPan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public BASEACCESSRow AddBASEACCESSRow(string BASE, string USER_NAME) {
+            public BASEACCESSRow AddBASEACCESSRow(BASERow parentBASERowByFK_BASEACCESS_BASE, USER_PROFILERow parentUSER_PROFILERowByFK_BASEACCESS_USER_PROFILE) {
                 BASEACCESSRow rowBASEACCESSRow = ((BASEACCESSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        BASE,
-                        USER_NAME};
+                        null,
+                        null};
+                if ((parentBASERowByFK_BASEACCESS_BASE != null)) {
+                    columnValuesArray[0] = parentBASERowByFK_BASEACCESS_BASE[0];
+                }
+                if ((parentUSER_PROFILERowByFK_BASEACCESS_USER_PROFILE != null)) {
+                    columnValuesArray[1] = parentUSER_PROFILERowByFK_BASEACCESS_USER_PROFILE[0];
+                }
                 rowBASEACCESSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBASEACCESSRow);
                 return rowBASEACCESSRow;
@@ -1373,11 +1456,17 @@ namespace AdminPan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public COMPANYACCESSRow AddCOMPANYACCESSRow(string COMPANY, string USER_NAME) {
+            public COMPANYACCESSRow AddCOMPANYACCESSRow(COMPANYRow parentCOMPANYRowByFK_COMPANYACCESS_COMPANY, USER_PROFILERow parentUSER_PROFILERowByFK_COMPANYACCESS_USER_PROFILE) {
                 COMPANYACCESSRow rowCOMPANYACCESSRow = ((COMPANYACCESSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        COMPANY,
-                        USER_NAME};
+                        null,
+                        null};
+                if ((parentCOMPANYRowByFK_COMPANYACCESS_COMPANY != null)) {
+                    columnValuesArray[0] = parentCOMPANYRowByFK_COMPANYACCESS_COMPANY[0];
+                }
+                if ((parentUSER_PROFILERowByFK_COMPANYACCESS_USER_PROFILE != null)) {
+                    columnValuesArray[1] = parentUSER_PROFILERowByFK_COMPANYACCESS_USER_PROFILE[0];
+                }
                 rowCOMPANYACCESSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCOMPANYACCESSRow);
                 return rowCOMPANYACCESSRow;
@@ -1649,11 +1738,17 @@ namespace AdminPan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PROFILEACCESSRow AddPROFILEACCESSRow(string PROFILE, string USER_NAME) {
+            public PROFILEACCESSRow AddPROFILEACCESSRow(WORK_PROFILERow parentWORK_PROFILERowByFK_PROFILEACCESS_WORK_PROFILE, USER_PROFILERow parentUSER_PROFILERowByFK_PROFILEACCESS_USER_PROFILE) {
                 PROFILEACCESSRow rowPROFILEACCESSRow = ((PROFILEACCESSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        PROFILE,
-                        USER_NAME};
+                        null,
+                        null};
+                if ((parentWORK_PROFILERowByFK_PROFILEACCESS_WORK_PROFILE != null)) {
+                    columnValuesArray[0] = parentWORK_PROFILERowByFK_PROFILEACCESS_WORK_PROFILE[0];
+                }
+                if ((parentUSER_PROFILERowByFK_PROFILEACCESS_USER_PROFILE != null)) {
+                    columnValuesArray[1] = parentUSER_PROFILERowByFK_PROFILEACCESS_USER_PROFILE[0];
+                }
                 rowPROFILEACCESSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPROFILEACCESSRow);
                 return rowPROFILEACCESSRow;
@@ -2422,6 +2517,299 @@ namespace AdminPan {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class APPLICATION_USER_ACTIVITY_LOGDataTable : global::System.Data.TypedTableBase<APPLICATION_USER_ACTIVITY_LOGRow> {
+            
+            private global::System.Data.DataColumn columnidLog;
+            
+            private global::System.Data.DataColumn columnuser_action;
+            
+            private global::System.Data.DataColumn columnuser_name;
+            
+            private global::System.Data.DataColumn columnPROCES_TIME_STAMP;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public APPLICATION_USER_ACTIVITY_LOGDataTable() {
+                this.TableName = "APPLICATION_USER_ACTIVITY_LOG";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal APPLICATION_USER_ACTIVITY_LOGDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected APPLICATION_USER_ACTIVITY_LOGDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn idLogColumn {
+                get {
+                    return this.columnidLog;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn user_actionColumn {
+                get {
+                    return this.columnuser_action;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn user_nameColumn {
+                get {
+                    return this.columnuser_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PROCES_TIME_STAMPColumn {
+                get {
+                    return this.columnPROCES_TIME_STAMP;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public APPLICATION_USER_ACTIVITY_LOGRow this[int index] {
+                get {
+                    return ((APPLICATION_USER_ACTIVITY_LOGRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event APPLICATION_USER_ACTIVITY_LOGRowChangeEventHandler APPLICATION_USER_ACTIVITY_LOGRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event APPLICATION_USER_ACTIVITY_LOGRowChangeEventHandler APPLICATION_USER_ACTIVITY_LOGRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event APPLICATION_USER_ACTIVITY_LOGRowChangeEventHandler APPLICATION_USER_ACTIVITY_LOGRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event APPLICATION_USER_ACTIVITY_LOGRowChangeEventHandler APPLICATION_USER_ACTIVITY_LOGRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddAPPLICATION_USER_ACTIVITY_LOGRow(APPLICATION_USER_ACTIVITY_LOGRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public APPLICATION_USER_ACTIVITY_LOGRow AddAPPLICATION_USER_ACTIVITY_LOGRow(int idLog, string user_action, string user_name, System.DateTime PROCES_TIME_STAMP) {
+                APPLICATION_USER_ACTIVITY_LOGRow rowAPPLICATION_USER_ACTIVITY_LOGRow = ((APPLICATION_USER_ACTIVITY_LOGRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        idLog,
+                        user_action,
+                        user_name,
+                        PROCES_TIME_STAMP};
+                rowAPPLICATION_USER_ACTIVITY_LOGRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowAPPLICATION_USER_ACTIVITY_LOGRow);
+                return rowAPPLICATION_USER_ACTIVITY_LOGRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                APPLICATION_USER_ACTIVITY_LOGDataTable cln = ((APPLICATION_USER_ACTIVITY_LOGDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new APPLICATION_USER_ACTIVITY_LOGDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnidLog = base.Columns["idLog"];
+                this.columnuser_action = base.Columns["user_action"];
+                this.columnuser_name = base.Columns["user_name"];
+                this.columnPROCES_TIME_STAMP = base.Columns["PROCES_TIME_STAMP"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnidLog = new global::System.Data.DataColumn("idLog", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidLog);
+                this.columnuser_action = new global::System.Data.DataColumn("user_action", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnuser_action);
+                this.columnuser_name = new global::System.Data.DataColumn("user_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnuser_name);
+                this.columnPROCES_TIME_STAMP = new global::System.Data.DataColumn("PROCES_TIME_STAMP", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPROCES_TIME_STAMP);
+                this.columnidLog.AllowDBNull = false;
+                this.columnuser_action.MaxLength = 50;
+                this.columnuser_name.MaxLength = 50;
+                this.columnPROCES_TIME_STAMP.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public APPLICATION_USER_ACTIVITY_LOGRow NewAPPLICATION_USER_ACTIVITY_LOGRow() {
+                return ((APPLICATION_USER_ACTIVITY_LOGRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new APPLICATION_USER_ACTIVITY_LOGRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(APPLICATION_USER_ACTIVITY_LOGRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.APPLICATION_USER_ACTIVITY_LOGRowChanged != null)) {
+                    this.APPLICATION_USER_ACTIVITY_LOGRowChanged(this, new APPLICATION_USER_ACTIVITY_LOGRowChangeEvent(((APPLICATION_USER_ACTIVITY_LOGRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.APPLICATION_USER_ACTIVITY_LOGRowChanging != null)) {
+                    this.APPLICATION_USER_ACTIVITY_LOGRowChanging(this, new APPLICATION_USER_ACTIVITY_LOGRowChangeEvent(((APPLICATION_USER_ACTIVITY_LOGRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.APPLICATION_USER_ACTIVITY_LOGRowDeleted != null)) {
+                    this.APPLICATION_USER_ACTIVITY_LOGRowDeleted(this, new APPLICATION_USER_ACTIVITY_LOGRowChangeEvent(((APPLICATION_USER_ACTIVITY_LOGRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.APPLICATION_USER_ACTIVITY_LOGRowDeleting != null)) {
+                    this.APPLICATION_USER_ACTIVITY_LOGRowDeleting(this, new APPLICATION_USER_ACTIVITY_LOGRowChangeEvent(((APPLICATION_USER_ACTIVITY_LOGRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveAPPLICATION_USER_ACTIVITY_LOGRow(APPLICATION_USER_ACTIVITY_LOGRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                egorcompanyDataSet1 ds = new egorcompanyDataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "APPLICATION_USER_ACTIVITY_LOGDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class BASERow : global::System.Data.DataRow {
@@ -2443,6 +2831,17 @@ namespace AdminPan {
                 }
                 set {
                     this[this.tableBASE.BASE_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public BASEACCESSRow[] GetBASEACCESSRows() {
+                if ((this.Table.ChildRelations["FK_BASEACCESS_BASE"] == null)) {
+                    return new BASEACCESSRow[0];
+                }
+                else {
+                    return ((BASEACCESSRow[])(base.GetChildRows(this.Table.ChildRelations["FK_BASEACCESS_BASE"])));
                 }
             }
         }
@@ -2482,6 +2881,28 @@ namespace AdminPan {
                     this[this.tableBASEACCESS.USER_NAMEColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public BASERow BASERow {
+                get {
+                    return ((BASERow)(this.GetParentRow(this.Table.ParentRelations["FK_BASEACCESS_BASE"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_BASEACCESS_BASE"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public USER_PROFILERow USER_PROFILERow {
+                get {
+                    return ((USER_PROFILERow)(this.GetParentRow(this.Table.ParentRelations["FK_BASEACCESS_USER_PROFILE"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_BASEACCESS_USER_PROFILE"]);
+                }
+            }
         }
         
         /// <summary>
@@ -2506,6 +2927,17 @@ namespace AdminPan {
                 }
                 set {
                     this[this.tableCOMPANY.COMPANY_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public COMPANYACCESSRow[] GetCOMPANYACCESSRows() {
+                if ((this.Table.ChildRelations["FK_COMPANYACCESS_COMPANY"] == null)) {
+                    return new COMPANYACCESSRow[0];
+                }
+                else {
+                    return ((COMPANYACCESSRow[])(base.GetChildRows(this.Table.ChildRelations["FK_COMPANYACCESS_COMPANY"])));
                 }
             }
         }
@@ -2545,6 +2977,28 @@ namespace AdminPan {
                     this[this.tableCOMPANYACCESS.USER_NAMEColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public COMPANYRow COMPANYRow {
+                get {
+                    return ((COMPANYRow)(this.GetParentRow(this.Table.ParentRelations["FK_COMPANYACCESS_COMPANY"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_COMPANYACCESS_COMPANY"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public USER_PROFILERow USER_PROFILERow {
+                get {
+                    return ((USER_PROFILERow)(this.GetParentRow(this.Table.ParentRelations["FK_COMPANYACCESS_USER_PROFILE"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_COMPANYACCESS_USER_PROFILE"]);
+                }
+            }
         }
         
         /// <summary>
@@ -2582,6 +3036,28 @@ namespace AdminPan {
                     this[this.tablePROFILEACCESS.USER_NAMEColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public USER_PROFILERow USER_PROFILERow {
+                get {
+                    return ((USER_PROFILERow)(this.GetParentRow(this.Table.ParentRelations["FK_PROFILEACCESS_USER_PROFILE"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PROFILEACCESS_USER_PROFILE"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public WORK_PROFILERow WORK_PROFILERow {
+                get {
+                    return ((WORK_PROFILERow)(this.GetParentRow(this.Table.ParentRelations["FK_PROFILEACCESS_WORK_PROFILE"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PROFILEACCESS_WORK_PROFILE"]);
+                }
+            }
         }
         
         /// <summary>
@@ -2606,6 +3082,17 @@ namespace AdminPan {
                 }
                 set {
                     this[this.tableWORK_PROFILE.PROFILE_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PROFILEACCESSRow[] GetPROFILEACCESSRows() {
+                if ((this.Table.ChildRelations["FK_PROFILEACCESS_WORK_PROFILE"] == null)) {
+                    return new PROFILEACCESSRow[0];
+                }
+                else {
+                    return ((PROFILEACCESSRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PROFILEACCESS_WORK_PROFILE"])));
                 }
             }
         }
@@ -2773,6 +3260,134 @@ namespace AdminPan {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDEF_BASENull() {
                 this[this.tableUSER_PROFILE.DEF_BASEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public BASEACCESSRow[] GetBASEACCESSRows() {
+                if ((this.Table.ChildRelations["FK_BASEACCESS_USER_PROFILE"] == null)) {
+                    return new BASEACCESSRow[0];
+                }
+                else {
+                    return ((BASEACCESSRow[])(base.GetChildRows(this.Table.ChildRelations["FK_BASEACCESS_USER_PROFILE"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public COMPANYACCESSRow[] GetCOMPANYACCESSRows() {
+                if ((this.Table.ChildRelations["FK_COMPANYACCESS_USER_PROFILE"] == null)) {
+                    return new COMPANYACCESSRow[0];
+                }
+                else {
+                    return ((COMPANYACCESSRow[])(base.GetChildRows(this.Table.ChildRelations["FK_COMPANYACCESS_USER_PROFILE"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PROFILEACCESSRow[] GetPROFILEACCESSRows() {
+                if ((this.Table.ChildRelations["FK_PROFILEACCESS_USER_PROFILE"] == null)) {
+                    return new PROFILEACCESSRow[0];
+                }
+                else {
+                    return ((PROFILEACCESSRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PROFILEACCESS_USER_PROFILE"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class APPLICATION_USER_ACTIVITY_LOGRow : global::System.Data.DataRow {
+            
+            private APPLICATION_USER_ACTIVITY_LOGDataTable tableAPPLICATION_USER_ACTIVITY_LOG;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal APPLICATION_USER_ACTIVITY_LOGRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableAPPLICATION_USER_ACTIVITY_LOG = ((APPLICATION_USER_ACTIVITY_LOGDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int idLog {
+                get {
+                    return ((int)(this[this.tableAPPLICATION_USER_ACTIVITY_LOG.idLogColumn]));
+                }
+                set {
+                    this[this.tableAPPLICATION_USER_ACTIVITY_LOG.idLogColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string user_action {
+                get {
+                    try {
+                        return ((string)(this[this.tableAPPLICATION_USER_ACTIVITY_LOG.user_actionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'user_action\' в таблице \'APPLICATION_USER_ACTIVITY_LOG\' равн" +
+                                "о DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAPPLICATION_USER_ACTIVITY_LOG.user_actionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string user_name {
+                get {
+                    try {
+                        return ((string)(this[this.tableAPPLICATION_USER_ACTIVITY_LOG.user_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'user_name\' в таблице \'APPLICATION_USER_ACTIVITY_LOG\' равно " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAPPLICATION_USER_ACTIVITY_LOG.user_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime PROCES_TIME_STAMP {
+                get {
+                    return ((global::System.DateTime)(this[this.tableAPPLICATION_USER_ACTIVITY_LOG.PROCES_TIME_STAMPColumn]));
+                }
+                set {
+                    this[this.tableAPPLICATION_USER_ACTIVITY_LOG.PROCES_TIME_STAMPColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isuser_actionNull() {
+                return this.IsNull(this.tableAPPLICATION_USER_ACTIVITY_LOG.user_actionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setuser_actionNull() {
+                this[this.tableAPPLICATION_USER_ACTIVITY_LOG.user_actionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isuser_nameNull() {
+                return this.IsNull(this.tableAPPLICATION_USER_ACTIVITY_LOG.user_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setuser_nameNull() {
+                this[this.tableAPPLICATION_USER_ACTIVITY_LOG.user_nameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3000,6 +3615,40 @@ namespace AdminPan {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public USER_PROFILERow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class APPLICATION_USER_ACTIVITY_LOGRowChangeEvent : global::System.EventArgs {
+            
+            private APPLICATION_USER_ACTIVITY_LOGRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public APPLICATION_USER_ACTIVITY_LOGRowChangeEvent(APPLICATION_USER_ACTIVITY_LOGRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public APPLICATION_USER_ACTIVITY_LOGRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3488,11 +4137,37 @@ namespace AdminPan.egorcompanyDataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT BASE, USER_NAME FROM dbo.BASEACCESS";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT @BASE, @USER_NAME FROM dbo.BASEACCESS";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BASE", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "INSERT INTO [dbo].[BASEACCESS] ([BASE], [USER_NAME]) VALUES (@BASE, @USER_NAME);\r" +
+                "\nSELECT BASE, USER_NAME FROM BASEACCESS WHERE (BASE = @BASE) AND (USER_NAME = @U" +
+                "SER_NAME)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BASE", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "BASE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "USER_NAME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT BASE, USER_NAME FROM dbo.BASEACCESS WHERE (USER_NAME LIKE @USER_NAME)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "USER_NAME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "SELECT BASE, USER_NAME FROM dbo.BASEACCESS WHERE BASE = @BASE AND USER_NAME = @US" +
+                "ER_NAME";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BASE", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "BASE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "USER_NAME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3514,6 +4189,138 @@ namespace AdminPan.egorcompanyDataSet1TableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual egorcompanyDataSet1.BASEACCESSDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            egorcompanyDataSet1.BASEACCESSDataTable dataTable = new egorcompanyDataSet1.BASEACCESSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int CheckWhExistence(egorcompanyDataSet1.BASEACCESSDataTable dataTable, string BASE, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((BASE == null)) {
+                throw new global::System.ArgumentNullException("BASE");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(BASE));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USER_NAME));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual egorcompanyDataSet1.BASEACCESSDataTable CheckWhExistence1(string BASE, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((BASE == null)) {
+                throw new global::System.ArgumentNullException("BASE");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(BASE));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USER_NAME));
+            }
+            egorcompanyDataSet1.BASEACCESSDataTable dataTable = new egorcompanyDataSet1.BASEACCESSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int SearchUser(egorcompanyDataSet1.BASEACCESSDataTable dataTable, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(USER_NAME));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual egorcompanyDataSet1.BASEACCESSDataTable Search0(string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(USER_NAME));
+            }
+            egorcompanyDataSet1.BASEACCESSDataTable dataTable = new egorcompanyDataSet1.BASEACCESSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int SelectAllWhereWH(egorcompanyDataSet1.BASEACCESSDataTable dataTable, string BASE, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            if ((BASE == null)) {
+                throw new global::System.ArgumentNullException("BASE");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(BASE));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USER_NAME));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual egorcompanyDataSet1.BASEACCESSDataTable SelectAllWhereWH1(string BASE, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            if ((BASE == null)) {
+                throw new global::System.ArgumentNullException("BASE");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(BASE));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USER_NAME));
+            }
             egorcompanyDataSet1.BASEACCESSDataTable dataTable = new egorcompanyDataSet1.BASEACCESSDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -3665,6 +4472,41 @@ namespace AdminPan.egorcompanyDataSet1TableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Original_BASE, string Original_USER_NAME) {
             return this.Update(Original_BASE, Original_USER_NAME, Original_BASE, Original_USER_NAME);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertWHAcc(string BASE, string USER_NAME) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((BASE == null)) {
+                throw new global::System.ArgumentNullException("BASE");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(BASE));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(USER_NAME));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -4138,11 +4980,37 @@ SELECT COMPANY, USER_NAME FROM COMPANYACCESS WHERE (COMPANY = @COMPANY) AND (USE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT COMPANY, USER_NAME FROM dbo.COMPANYACCESS";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT @COMPANY, @USER_NAME FROM dbo.COMPANYACCESS";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@COMPANY", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "INSERT INTO [dbo].[COMPANYACCESS] ([COMPANY], [USER_NAME]) VALUES (@COMPANY, @USE" +
+                "R_NAME);";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@COMPANY", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "COMPANY", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "USER_NAME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT COMPANY, USER_NAME FROM dbo.COMPANYACCESS WHERE (USER_NAME LIKE @USER_NAME" +
+                ")";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "USER_NAME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "SELECT COMPANY, USER_NAME FROM dbo.COMPANYACCESS WHERE COMPANY = @COMPANY AND USE" +
+                "R_NAME = @USER_NAME";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@COMPANY", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "COMPANY", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "USER_NAME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4164,6 +5032,138 @@ SELECT COMPANY, USER_NAME FROM COMPANYACCESS WHERE (COMPANY = @COMPANY) AND (USE
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual egorcompanyDataSet1.COMPANYACCESSDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            egorcompanyDataSet1.COMPANYACCESSDataTable dataTable = new egorcompanyDataSet1.COMPANYACCESSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int CheckExistence(egorcompanyDataSet1.COMPANYACCESSDataTable dataTable, string COMPANY, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((COMPANY == null)) {
+                throw new global::System.ArgumentNullException("COMPANY");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(COMPANY));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USER_NAME));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual egorcompanyDataSet1.COMPANYACCESSDataTable CheckExistence1(string COMPANY, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((COMPANY == null)) {
+                throw new global::System.ArgumentNullException("COMPANY");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(COMPANY));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USER_NAME));
+            }
+            egorcompanyDataSet1.COMPANYACCESSDataTable dataTable = new egorcompanyDataSet1.COMPANYACCESSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int SearchUser(egorcompanyDataSet1.COMPANYACCESSDataTable dataTable, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(USER_NAME));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual egorcompanyDataSet1.COMPANYACCESSDataTable Search0(string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(USER_NAME));
+            }
+            egorcompanyDataSet1.COMPANYACCESSDataTable dataTable = new egorcompanyDataSet1.COMPANYACCESSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int SelectAllWhere(egorcompanyDataSet1.COMPANYACCESSDataTable dataTable, string COMPANY, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            if ((COMPANY == null)) {
+                throw new global::System.ArgumentNullException("COMPANY");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(COMPANY));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USER_NAME));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual egorcompanyDataSet1.COMPANYACCESSDataTable SelectAllWhere1(string COMPANY, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            if ((COMPANY == null)) {
+                throw new global::System.ArgumentNullException("COMPANY");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(COMPANY));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USER_NAME));
+            }
             egorcompanyDataSet1.COMPANYACCESSDataTable dataTable = new egorcompanyDataSet1.COMPANYACCESSDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -4315,6 +5315,41 @@ SELECT COMPANY, USER_NAME FROM COMPANYACCESS WHERE (COMPANY = @COMPANY) AND (USE
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Original_COMPANY, string Original_USER_NAME) {
             return this.Update(Original_COMPANY, Original_USER_NAME, Original_COMPANY, Original_USER_NAME);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertCompanyAcc(string COMPANY, string USER_NAME) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((COMPANY == null)) {
+                throw new global::System.ArgumentNullException("COMPANY");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(COMPANY));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(USER_NAME));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -4478,11 +5513,31 @@ SELECT PROFILE, USER_NAME FROM PROFILEACCESS WHERE (PROFILE = @PROFILE) AND (USE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT PROFILE, USER_NAME FROM dbo.PROFILEACCESS";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[PROFILEACCESS] ([PROFILE], [USER_NAME]) VALUES (@PROFILE, @USE" +
+                "R_NAME);\r\nSELECT PROFILE, USER_NAME FROM PROFILEACCESS WHERE (PROFILE = @PROFILE" +
+                ") AND (USER_NAME = @USER_NAME)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PROFILE", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "PROFILE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "USER_NAME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT PROFILE, USER_NAME FROM PROFILEACCESS WHERE (USER_NAME LIKE @USER_NAME)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "USER_NAME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT PROFILE, USER_NAME FROM dbo.PROFILEACCESS WHERE PROFILE = @PROFILE AND USE" +
+                "R_NAME = @USER_NAME";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PROFILE", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "PROFILE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "USER_NAME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4504,6 +5559,90 @@ SELECT PROFILE, USER_NAME FROM PROFILEACCESS WHERE (PROFILE = @PROFILE) AND (USE
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual egorcompanyDataSet1.PROFILEACCESSDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            egorcompanyDataSet1.PROFILEACCESSDataTable dataTable = new egorcompanyDataSet1.PROFILEACCESSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int SearchUser(egorcompanyDataSet1.PROFILEACCESSDataTable dataTable, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(USER_NAME));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual egorcompanyDataSet1.PROFILEACCESSDataTable Search0(string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(USER_NAME));
+            }
+            egorcompanyDataSet1.PROFILEACCESSDataTable dataTable = new egorcompanyDataSet1.PROFILEACCESSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int SelectAllWhereWorkProf(egorcompanyDataSet1.PROFILEACCESSDataTable dataTable, string PROFILE, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((PROFILE == null)) {
+                throw new global::System.ArgumentNullException("PROFILE");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(PROFILE));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USER_NAME));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual egorcompanyDataSet1.PROFILEACCESSDataTable SelectAllWhereWorkProf1(string PROFILE, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((PROFILE == null)) {
+                throw new global::System.ArgumentNullException("PROFILE");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(PROFILE));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USER_NAME));
+            }
             egorcompanyDataSet1.PROFILEACCESSDataTable dataTable = new egorcompanyDataSet1.PROFILEACCESSDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -4655,6 +5794,41 @@ SELECT PROFILE, USER_NAME FROM PROFILEACCESS WHERE (PROFILE = @PROFILE) AND (USE
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Original_PROFILE, string Original_USER_NAME) {
             return this.Update(Original_PROFILE, Original_USER_NAME, Original_PROFILE, Original_USER_NAME);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertWPROFAcc(string PROFILE, string USER_NAME) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            if ((PROFILE == null)) {
+                throw new global::System.ArgumentNullException("PROFILE");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(PROFILE));
+            }
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(USER_NAME));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -5157,7 +6331,7 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM dbo.USE" +
@@ -5165,10 +6339,16 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE\r\nFROM" +
-                "            USER_PROFILE\r\nWHERE        (USER_NAME LIKE @USER_NAME)";
+            this._commandCollection[1].CommandText = "SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM dbo.USE" +
+                "R_PROFILE WHERE USER_NAME = @USER_NAME";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "USER_NAME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE\r\nFROM" +
+                "            USER_PROFILE\r\nWHERE        (USER_NAME LIKE @USER_NAME)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "USER_NAME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5199,7 +6379,7 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int SearchUser(egorcompanyDataSet1.USER_PROFILEDataTable dataTable, string USER_NAME) {
+        public virtual int CheckUserExist(egorcompanyDataSet1.USER_PROFILEDataTable dataTable, string USER_NAME) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((USER_NAME == null)) {
                 throw new global::System.ArgumentNullException("USER_NAME");
@@ -5218,8 +6398,44 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual egorcompanyDataSet1.USER_PROFILEDataTable Search0(string USER_NAME) {
+        public virtual egorcompanyDataSet1.USER_PROFILEDataTable CheckUserExist1(string USER_NAME) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(USER_NAME));
+            }
+            egorcompanyDataSet1.USER_PROFILEDataTable dataTable = new egorcompanyDataSet1.USER_PROFILEDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int SearchUser(egorcompanyDataSet1.USER_PROFILEDataTable dataTable, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((USER_NAME == null)) {
+                throw new global::System.ArgumentNullException("USER_NAME");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(USER_NAME));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual egorcompanyDataSet1.USER_PROFILEDataTable Search0(string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((USER_NAME == null)) {
                 throw new global::System.ArgumentNullException("USER_NAME");
             }
@@ -5497,6 +6713,335 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class APPLICATION_USER_ACTIVITY_LOGTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public APPLICATION_USER_ACTIVITY_LOGTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "APPLICATION_USER_ACTIVITY_LOG";
+            tableMapping.ColumnMappings.Add("idLog", "idLog");
+            tableMapping.ColumnMappings.Add("user_action", "user_action");
+            tableMapping.ColumnMappings.Add("user_name", "user_name");
+            tableMapping.ColumnMappings.Add("PROCES_TIME_STAMP", "PROCES_TIME_STAMP");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[APPLICATION_USER_ACTIVITY_LOG] ([idLog], [user_action], [user_" +
+                "name], [PROCES_TIME_STAMP]) VALUES (@idLog, @user_action, @user_name, @PROCES_TI" +
+                "ME_STAMP)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idLog", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idLog", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_action", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_action", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PROCES_TIME_STAMP", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PROCES_TIME_STAMP", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::AdminPan.Properties.Settings.Default.egorcompanyConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT idLog, user_action, user_name, PROCES_TIME_STAMP FROM dbo.APPLICATION_USER" +
+                "_ACTIVITY_LOG";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[APPLICATION_USER_ACTIVITY_LOG] ([user_action], [user_name]) VA" +
+                "LUES (@user_action, @user_name)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_action", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "user_action", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "user_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        *\r\nFROM            [dbo].[APPLICATION_USER_ACTIVITY_LOG]\r\nWHERE    " +
+                "    (USER_NAME LIKE @USER_NAME)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USER_NAME", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "user_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(egorcompanyDataSet1.APPLICATION_USER_ACTIVITY_LOGDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual egorcompanyDataSet1.APPLICATION_USER_ACTIVITY_LOGDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            egorcompanyDataSet1.APPLICATION_USER_ACTIVITY_LOGDataTable dataTable = new egorcompanyDataSet1.APPLICATION_USER_ACTIVITY_LOGDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int SearchUser(egorcompanyDataSet1.APPLICATION_USER_ACTIVITY_LOGDataTable dataTable, string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((USER_NAME == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(USER_NAME));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual egorcompanyDataSet1.APPLICATION_USER_ACTIVITY_LOGDataTable Search0(string USER_NAME) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((USER_NAME == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(USER_NAME));
+            }
+            egorcompanyDataSet1.APPLICATION_USER_ACTIVITY_LOGDataTable dataTable = new egorcompanyDataSet1.APPLICATION_USER_ACTIVITY_LOGDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(egorcompanyDataSet1.APPLICATION_USER_ACTIVITY_LOGDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(egorcompanyDataSet1 dataSet) {
+            return this.Adapter.Update(dataSet, "APPLICATION_USER_ACTIVITY_LOG");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int idLog, string user_action, string user_name, System.DateTime PROCES_TIME_STAMP) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(idLog));
+            if ((user_action == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(user_action));
+            }
+            if ((user_name == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(user_name));
+            }
+            this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(PROCES_TIME_STAMP));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertActivityLog(string user_action, string user_name) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            if ((user_action == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(user_action));
+            }
+            if ((user_name == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(user_name));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5521,6 +7066,8 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
         private WORK_PROFILETableAdapter _wORK_PROFILETableAdapter;
         
         private USER_PROFILETableAdapter _uSER_PROFILETableAdapter;
+        
+        private APPLICATION_USER_ACTIVITY_LOGTableAdapter _aPPLICATION_USER_ACTIVITY_LOGTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -5637,6 +7184,20 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public APPLICATION_USER_ACTIVITY_LOGTableAdapter APPLICATION_USER_ACTIVITY_LOGTableAdapter {
+            get {
+                return this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter;
+            }
+            set {
+                this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -5682,6 +7243,10 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
                             && (this._uSER_PROFILETableAdapter.Connection != null))) {
                     return this._uSER_PROFILETableAdapter.Connection;
                 }
+                if (((this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter != null) 
+                            && (this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Connection != null))) {
+                    return this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -5716,6 +7281,9 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
                 if ((this._uSER_PROFILETableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -5736,39 +7304,12 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._bASEACCESSTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.BASEACCESS.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._bASEACCESSTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._cOMPANYTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.COMPANY.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._cOMPANYTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._cOMPANYACCESSTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.COMPANYACCESS.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._cOMPANYACCESSTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._pROFILEACCESSTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PROFILEACCESS.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pROFILEACCESSTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5790,6 +7331,42 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._bASEACCESSTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.BASEACCESS.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._bASEACCESSTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._cOMPANYACCESSTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.COMPANYACCESS.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._cOMPANYACCESSTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._pROFILEACCESSTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PROFILEACCESS.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._pROFILEACCESSTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.APPLICATION_USER_ACTIVITY_LOG.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -5808,35 +7385,11 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._bASEACCESSTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.BASEACCESS.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._bASEACCESSTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._cOMPANYTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.COMPANY.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._cOMPANYTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._cOMPANYACCESSTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.COMPANYACCESS.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._cOMPANYACCESSTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._pROFILEACCESSTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PROFILEACCESS.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pROFILEACCESSTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5856,6 +7409,38 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._bASEACCESSTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.BASEACCESS.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._bASEACCESSTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._cOMPANYACCESSTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.COMPANYACCESS.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._cOMPANYACCESSTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._pROFILEACCESSTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PROFILEACCESS.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._pROFILEACCESSTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.APPLICATION_USER_ACTIVITY_LOG.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -5866,19 +7451,11 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(egorcompanyDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._uSER_PROFILETableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.USER_PROFILE.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.APPLICATION_USER_ACTIVITY_LOG.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._uSER_PROFILETableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._wORK_PROFILETableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.WORK_PROFILE.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._wORK_PROFILETableAdapter.Update(deletedRows));
+                    result = (result + this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -5898,19 +7475,35 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._cOMPANYTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.COMPANY.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._cOMPANYTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._bASEACCESSTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.BASEACCESS.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._bASEACCESSTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._uSER_PROFILETableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.USER_PROFILE.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._uSER_PROFILETableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._wORK_PROFILETableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.WORK_PROFILE.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._wORK_PROFILETableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._cOMPANYTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.COMPANY.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._cOMPANYTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -5993,6 +7586,11 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
             }
             if (((this._uSER_PROFILETableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._uSER_PROFILETableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -6091,6 +7689,15 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
                         adaptersWithAcceptChangesDuringUpdate.Add(this._uSER_PROFILETableAdapter.Adapter);
                     }
                 }
+                if ((this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter != null)) {
+                    revertConnections.Add(this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter, this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Connection);
+                    this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -6176,6 +7783,10 @@ SELECT USER_NAME, DEAPARTMENT, COMPANY_ACC, BASE_ACC, PASS, DEF_BASE FROM USER_P
                 if ((this._uSER_PROFILETableAdapter != null)) {
                     this._uSER_PROFILETableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._uSER_PROFILETableAdapter]));
                     this._uSER_PROFILETableAdapter.Transaction = null;
+                }
+                if ((this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter != null)) {
+                    this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter]));
+                    this._aPPLICATION_USER_ACTIVITY_LOGTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
